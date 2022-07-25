@@ -4,9 +4,10 @@ var categoryList = mutableListOf<Category>()
 
 class Category(
     var title: String,
-    var movieShelf:List<Movie>
+    var movieShelf: List<Movie>
 )
-fun addCategory(){
+
+fun addCategory() {
     val category = listOf(
         "New Movie",
         "Best SoundTrack",
@@ -14,8 +15,8 @@ fun addCategory(){
         "Top Hits",
         "Old School Movie"
     )
-    for (element in category){
-        val i= Category(element, movieList)
+    for (element in category) {
+        val i = Category(element, movieList)
         categoryList.add(i)
     }
 }

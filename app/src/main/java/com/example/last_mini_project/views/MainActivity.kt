@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.last_mini_project.adapter.MovieAdapter
 import com.example.last_mini_project.adapter.ShelfAdapter
 import com.example.last_mini_project.common.MovieClickListener
 import com.example.last_mini_project.data.*
@@ -21,11 +22,12 @@ class MainActivity : AppCompatActivity(), MovieClickListener {
         addMovies()
         addCategory()
 
-        val mainActivity = this
         binding.shelfRecyclerView.apply {
             layoutManager =
-                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL,false)
-            adapter = ShelfAdapter(categoryList,mainActivity)
+                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            adapter = ShelfAdapter(categoryList).apply {
+                clickListener = this@MainActivity
+            }
         }
     }
 

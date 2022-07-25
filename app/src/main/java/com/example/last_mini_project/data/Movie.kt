@@ -1,9 +1,13 @@
 package com.example.last_mini_project.data
 
 
+import android.util.Log
+import android.util.Log.DEBUG
+import com.example.last_mini_project.BuildConfig.DEBUG
 import com.example.last_mini_project.R
 import java.lang.Math.random
 import java.util.*
+import java.util.concurrent.ThreadLocalRandom
 
 var movieList = mutableListOf<Movie>()
 val MOVIE_EXTRA_ID = "MOVIE_EXTRA_ID"
@@ -13,8 +17,9 @@ class Movie(
     var moviename: String,
     var genres: String,
     var description: String,
-    val id : Int = movieList.size
+    val id: Int = movieList.size
 )
+
 fun addMovies() {
 
     val random = Random()
@@ -83,15 +88,13 @@ fun addMovies() {
                 "\\\"The Boys,\\\" who set out to take down corrupt superheroes with no more than blue collar grit and a willingness to fight dirty.\n" +
                 "\n"
     )
-
-    for(i in 0 until (movieName.size)){
-
-        val i = Movie(
+    repeat(movieName.size){
+        val movie = Movie(
             coverImage[random.nextInt(coverImage.size)],
             movieName[random.nextInt(movieName.size)],
             genres[random.nextInt(genres.size)],
             description[random.nextInt(description.size)]
         )
-        movieList.add(i)
+        movieList.add(movie)
     }
 }

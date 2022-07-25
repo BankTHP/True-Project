@@ -6,7 +6,7 @@ import com.example.last_mini_project.databinding.CardshelfBinding
 
 class MovieViewHolder (
     private val cardshelfBinding: CardshelfBinding,
-    private val clickListener: MovieClickListener?= null
+    var onClick : ((movie : Movie) -> Unit)? = null
     ) : RecyclerView.ViewHolder(cardshelfBinding.root)
 {
         fun bindMovie(movie : Movie){
@@ -14,7 +14,7 @@ class MovieViewHolder (
             cardshelfBinding.movieNameTextView.text = movie.moviename
 
             cardshelfBinding.movieCardView.setOnClickListener{
-                clickListener?.onClick(movie)
+                onClick?.invoke(movie)
             }
         }
     }
